@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rows>
+  <Row>
+    <Count>0</Count>
+    <Result>0</Result>
+  </Row>
+  <Row>
+    <Count>1</Count>
+    <Result>7</Result>
+  </Row>
+  <Row>
+    <Count>2</Count>
+    <Result>14</Result>
+  </Row>
+  <Row>
+    <Count>3</Count>
+    <Result>21</Result>
+  </Row>
+  <Row>
+    <Count>4</Count>
+    <Result>28</Result>
+  </Row>
+  <Row>
+    <Count>5</Count>
+    <Result>35</Result>
+  </Row>
+</Rows>
