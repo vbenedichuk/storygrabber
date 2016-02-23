@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Com.Benedichuk.Testing.EF
 {
-    public class TestDbSet<TEntity> : DbSet<TEntity>, IQueryable, IEnumerable<TEntity>, IDbAsyncEnumerable<TEntity>
+    public sealed class TestDbSet<TEntity> : DbSet<TEntity>, IQueryable, IEnumerable<TEntity>, IDbAsyncEnumerable<TEntity>
           where TEntity : class
     {
         List<TEntity> itemsToRemove;
@@ -94,7 +94,7 @@ namespace Com.Benedichuk.Testing.EF
             return new TestDbAsyncEnumerator<TEntity>(data.GetEnumerator());
         }
 
-        public virtual void SaveChanges() {
+        public void SaveChanges() {
             foreach(TEntity entity in itemsToRemove)
             {
                 data.Remove(entity);
@@ -102,7 +102,7 @@ namespace Com.Benedichuk.Testing.EF
             itemsToRemove.Clear();
         }
         
-        public virtual IEnumerable<TEntity> AddRangeForTest(IEnumerable<TEntity> entities)
+        public IEnumerable<TEntity> AddRangeForTest(IEnumerable<TEntity> entities)
         {
             foreach (TEntity entity in entities)
             {

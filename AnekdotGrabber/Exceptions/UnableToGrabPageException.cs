@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 
 namespace AnekdotGrabber.Logic
 {
@@ -15,6 +16,14 @@ namespace AnekdotGrabber.Logic
         {
             this.statusCode = statusCode;
             this.url = url;
+        }
+
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            base.GetObjectData(info, context);
+            info.AddValue("Url", url);
+            info.AddValue("StatusCode", StatusCode);
         }
 
     }
