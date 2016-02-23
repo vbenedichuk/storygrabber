@@ -71,10 +71,8 @@
     <Compile Include="Data\AppDBContext.cs" />
     <Compile Include="Exceptions\UnableToGrabPageException.cs" />
     <Compile Include="Interfaces\IDBContext.cs" />
-    <Compile Include="Interfaces\ILogWrapper.cs" />
     <Compile Include="Interfaces\IPageGrabber.cs" />
     <Compile Include="Interfaces\IPageParser.cs" />
-    <Compile Include="Logic\LogWrapper.cs" />
     <Compile Include="Logic\PageGrabber.cs" />
     <Compile Include="Logic\AnekdotRuGrabber.cs" />
     <Compile Include="Program.cs" />
