@@ -40,7 +40,8 @@ namespace Com.Benedichuk.Testing.EF
         {
             itemsToRemove.AddRange(entities);
             return entities;
-        }        
+        }
+
 
         public override TEntity Attach(TEntity item)
         {
@@ -99,6 +100,15 @@ namespace Com.Benedichuk.Testing.EF
                 data.Remove(entity);
             }
             itemsToRemove.Clear();
+        }
+        
+        public virtual IEnumerable<TEntity> AddRangeForTest(IEnumerable<TEntity> entities)
+        {
+            foreach (TEntity entity in entities)
+            {
+                data.Add(entity);
+            }
+            return entities;
         }
     }
 }

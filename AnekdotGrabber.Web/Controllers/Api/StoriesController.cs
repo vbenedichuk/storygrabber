@@ -12,6 +12,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
     public class StoriesController : ApiController
     {
         IApplicationDbContext ctx;
+
         public StoriesController(IApplicationDbContext ctx) : base()
         {
             this.ctx = ctx;
