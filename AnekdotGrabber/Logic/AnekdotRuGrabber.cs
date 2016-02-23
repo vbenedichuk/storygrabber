@@ -27,6 +27,7 @@ namespace AnekdotGrabber.Logic
         {            
             if(startDateTime > endDateTime)
             {
+                logWrapper.Error("{0}  Start Date:{1} End Date:{2}", AppResources.StartDateShouldBeLessOrEqualToEndDate, startDateTime, endDateTime);
                 throw new ArgumentException(AppResources.StartDateShouldBeLessOrEqualToEndDate);
             }
             DateTime currentDate = startDateTime.Date;

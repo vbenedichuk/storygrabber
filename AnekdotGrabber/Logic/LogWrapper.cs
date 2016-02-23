@@ -22,5 +22,9 @@ namespace AnekdotGrabber.Logic
         {
             logger.Info(message, args);
         }
+        public void Error(string message, params object[] args)
+        {
+            logger.Error(message, args);
+        }
     }
 }

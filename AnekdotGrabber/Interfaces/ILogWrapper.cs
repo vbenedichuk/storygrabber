@@ -8,6 +8,7 @@ namespace AnekdotGrabber.Interfaces
 {
     public interface ILogWrapper
     {
+        void Error(string message, params object[] args);
         void Info(string message, params object[] args);
     }
 }

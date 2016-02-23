@@ -29,6 +29,7 @@ namespace AnekdotGrabber.Test
             LogWrapperMock logWrapperMock = new LogWrapperMock();
             AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock, logWrapperMock);
             grabber.GrabIt(new DateTime(2016, 02, 22, 10, 03, 12));
+            Assert.AreEqual(1, logWrapperMock.Count);
             Assert.AreEqual(1, resultUrls.Count);
             Assert.AreEqual(2, dbContextMock.SaveChangesCount);
             Assert.AreEqual(result, dbContextMock.Stories.Local.Count);
@@ -53,6 +54,7 @@ namespace AnekdotGrabber.Test
             LogWrapperMock logWrapperMock = new LogWrapperMock();
             AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock, logWrapperMock);
             grabber.GrabIt(new DateTime(2016, 02, 16, 10, 03, 12), new DateTime(2016, 02, 22, 10, 03, 12));
+            Assert.AreEqual(7, logWrapperMock.Count);
             Assert.AreEqual(14, dbContextMock.SaveChangesCount);
             Assert.AreEqual(result, dbContextMock.Stories.Local.Count);
             Assert.AreEqual(7, resultUrls.Count);
@@ -81,6 +83,7 @@ namespace AnekdotGrabber.Test
             catch(ArgumentException ex)
             {
                 Assert.AreEqual(ex.Message, "Start Date should be less or equal to End Date");
+                Assert.AreEqual(1, logWrapperMock.Count);
             }
         }
     }
