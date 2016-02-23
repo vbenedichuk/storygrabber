@@ -18,13 +18,23 @@ namespace AnekdotGrabber.Web.Controllers.Api
             this.ctx = ctx;
         }
 
-        // GET: api/Stories
+        /// <summary>
+        /// GET: api/Stories
+        /// Возвращает список историй за дату
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public IEnumerable<Story> Get(DateTime date)
         {
             return ctx.Stories.Where<Story>(x => x.Date == date.Date);
         }
 
-        // GET: api/Stories/5
+        /// <summary>
+        /// GET: api/Stories/5
+        /// Возвращает историю по ID
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public Story Get(int id)
         {            
             return ctx.Stories.FirstOrDefault<Story>(x => x.Id == id);
