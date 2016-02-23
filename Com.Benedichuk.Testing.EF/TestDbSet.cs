@@ -13,38 +13,38 @@ namespace Com.Benedichuk.Testing.EF
     public class TestDbSet<TEntity> : DbSet<TEntity>, IQueryable, IEnumerable<TEntity>, IDbAsyncEnumerable<TEntity>
           where TEntity : class
     {
-        List<TEntity> _itemsToRemove;
-        ObservableCollection<TEntity> _data;
-        IQueryable _query;
+        List<TEntity> itemsToRemove;
+        ObservableCollection<TEntity> data;
+        IQueryable query;
 
         public TestDbSet()
         {
-            _data = new ObservableCollection<TEntity>();
-            _query = _data.AsQueryable();
-            _itemsToRemove = new List<TEntity>();
+            data = new ObservableCollection<TEntity>();
+            query = data.AsQueryable();
+            itemsToRemove = new List<TEntity>();
         }
 
         public override TEntity Add(TEntity item)
         {
-            _data.Add(item);
+            data.Add(item);
             return item;
         }
 
         public override TEntity Remove(TEntity item)
         {
-            _data.Remove(item);
+            data.Remove(item);
             return item;
         }
 
         public override IEnumerable<TEntity> RemoveRange(IEnumerable<TEntity> entities)
         {
-            _itemsToRemove.AddRange(entities);
+            itemsToRemove.AddRange(entities);
             return entities;
         }        
 
         public override TEntity Attach(TEntity item)
         {
-            _data.Add(item);
+            data.Add(item);
             return item;
         }
 
@@ -60,45 +60,45 @@ namespace Com.Benedichuk.Testing.EF
 
         public override ObservableCollection<TEntity> Local
         {
-            get { return _data; }
+            get { return data; }
         }
 
         Type IQueryable.ElementType
         {
-            get { return _query.ElementType; }
+            get { return query.ElementType; }
         }
 
         Expression IQueryable.Expression
         {
-            get { return _query.Expression; }
+            get { return query.Expression; }
         }
 
         IQueryProvider IQueryable.Provider
         {
-            get { return new TestDbAsyncQueryProvider<TEntity>(_query.Provider); }
+            get { return new TestDbAsyncQueryProvider<TEntity>(query.Provider); }
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return _data.GetEnumerator();
+            return data.GetEnumerator();
         }
 
         IEnumerator<TEntity> IEnumerable<TEntity>.GetEnumerator()
         {
-            return _data.GetEnumerator();
+            return data.GetEnumerator();
         }
 
         IDbAsyncEnumerator<TEntity> IDbAsyncEnumerable<TEntity>.GetAsyncEnumerator()
         {
-            return new TestDbAsyncEnumerator<TEntity>(_data.GetEnumerator());
+            return new TestDbAsyncEnumerator<TEntity>(data.GetEnumerator());
         }
 
         public virtual void SaveChanges() {
-            foreach(TEntity entity in _itemsToRemove)
+            foreach(TEntity entity in itemsToRemove)
             {
-                _data.Remove(entity);
+                data.Remove(entity);
             }
-            _itemsToRemove.Clear();
+            itemsToRemove.Clear();
         }
     }
 }

@@ -11,11 +11,11 @@ namespace Com.Benedichuk.Testing.EF
 {
     internal class TestDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider
     {
-        private readonly IQueryProvider _inner;
+        private readonly IQueryProvider inner;
 
         internal TestDbAsyncQueryProvider(IQueryProvider inner)
         {
-            _inner = inner;
+            this.inner = inner;
         }
 
         public IQueryable CreateQuery(Expression expression)
@@ -30,12 +30,12 @@ namespace Com.Benedichuk.Testing.EF
 
         public object Execute(Expression expression)
         {
-            return _inner.Execute(expression);
+            return inner.Execute(expression);
         }
 
         public TResult Execute<TResult>(Expression expression)
         {
-            return _inner.Execute<TResult>(expression);
+            return inner.Execute<TResult>(expression);
         }
 
         public Task<object> ExecuteAsync(Expression expression, CancellationToken cancellationToken)

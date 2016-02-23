@@ -10,26 +10,26 @@ namespace Com.Benedichuk.Testing.EF
 {
     internal class TestDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
     {
-        private readonly IEnumerator<T> _inner;
+        private readonly IEnumerator<T> inner;
 
         public TestDbAsyncEnumerator(IEnumerator<T> inner)
         {
-            _inner = inner;
+            this.inner = inner;
         }
 
         public void Dispose()
         {
-            _inner.Dispose();
+            inner.Dispose();
         }
 
         public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
         {
-            return Task.FromResult(_inner.MoveNext());
+            return Task.FromResult(inner.MoveNext());
         }
 
         public T Current
         {
-            get { return _inner.Current; }
+            get { return inner.Current; }
         }
 
         object IDbAsyncEnumerator.Current
