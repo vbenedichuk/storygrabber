@@ -13,7 +13,7 @@ namespace AnekdotGrabber.Data
     class AppDBContext : DbContext, IAppDbContext
     {
         public DbSet<Story> Stories { get; set; }
-        public AppDBContext() : base("StoryBase") 
+        public AppDBContext() : base("DefaultConnection") 
         {
         }
     }

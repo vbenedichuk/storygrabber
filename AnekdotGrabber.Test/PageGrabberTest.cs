@@ -7,6 +7,8 @@ namespace AnekdotGrabber.Test
     [TestClass]
     public class PageGrabberTest
     {
+        private const string FAIL_LINK = "http://www.anekdot.ru/release/story/ds/";
+
         [TestMethod]
         public void GetPageContentsTest()
         {
@@ -26,6 +28,7 @@ namespace AnekdotGrabber.Test
             catch (UnableToGrabPageException ex)
             {
                 Assert.AreEqual("NotFound", ex.StatusCode.ToString());
+                Assert.AreEqual(FAIL_LINK, ex.Url);
             }
         }
     }

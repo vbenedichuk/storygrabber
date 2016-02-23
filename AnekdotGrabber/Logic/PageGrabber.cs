@@ -23,7 +23,7 @@ namespace AnekdotGrabber.Logic
             }
             else
             {
-                throw new UnableToGrabPageException(responseTask.Result.StatusCode);
+                throw new UnableToGrabPageException(responseTask.Result.StatusCode, requestUrl);
             }
         }
     }

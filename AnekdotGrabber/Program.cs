@@ -12,8 +12,14 @@ namespace AnekdotGrabber
     {
         static void Main(string[] args)
         {
-            AnekdotRuGrabber grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext());
-            grabber.GrabIt(DateTime.Now.AddMonths(-1), DateTime.Now);
+            try {
+                AnekdotRuGrabber grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext());
+                grabber.GrabIt(DateTime.Now.AddMonths(-1), DateTime.Now);
+            }
+            catch(UnableToGrabPageException ex)
+            {
+                Console.WriteLine(String.Format("Unable to grab the page. ErrorCode: {0}, Url:{1}", ex.StatusCode, ex.Url));//TODO: Extract to resourse.
+            }
         }
     }
 }

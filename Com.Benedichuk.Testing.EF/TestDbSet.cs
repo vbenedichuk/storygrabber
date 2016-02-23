@@ -8,11 +8,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnekdotGrabber.Test.Mocks.EF
+namespace Com.Benedichuk.Testing.EF
 {
     public class TestDbSet<TEntity> : DbSet<TEntity>, IQueryable, IEnumerable<TEntity>, IDbAsyncEnumerable<TEntity>
           where TEntity : class
     {
+        List<TEntity> _itemsToRemove;
         ObservableCollection<TEntity> _data;
         IQueryable _query;
 
@@ -20,6 +21,7 @@ namespace AnekdotGrabber.Test.Mocks.EF
         {
             _data = new ObservableCollection<TEntity>();
             _query = _data.AsQueryable();
+            _itemsToRemove = new List<TEntity>();
         }
 
         public override TEntity Add(TEntity item)
@@ -33,6 +35,12 @@ namespace AnekdotGrabber.Test.Mocks.EF
             _data.Remove(item);
             return item;
         }
+
+        public override IEnumerable<TEntity> RemoveRange(IEnumerable<TEntity> entities)
+        {
+            _itemsToRemove.AddRange(entities);
+            return entities;
+        }        
 
         public override TEntity Attach(TEntity item)
         {
@@ -83,6 +91,14 @@ namespace AnekdotGrabber.Test.Mocks.EF
         IDbAsyncEnumerator<TEntity> IDbAsyncEnumerable<TEntity>.GetAsyncEnumerator()
         {
             return new TestDbAsyncEnumerator<TEntity>(_data.GetEnumerator());
+        }
+
+        public virtual void SaveChanges() {
+            foreach(TEntity entity in _itemsToRemove)
+            {
+                _data.Remove(entity);
+            }
+            _itemsToRemove.Clear();
         }
     }
 }

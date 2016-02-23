@@ -65,10 +65,6 @@
     <Compile Include="AnekdotRuGrabberTest.cs" />
     <Compile Include="AnekdotRuPageParserTest.cs" />
     <Compile Include="Mocks\DBContextMock.cs" />
-    <Compile Include="Mocks\EF\TestDbAsyncEnumerable.cs" />
-    <Compile Include="Mocks\EF\TestDbAsyncEnumerator.cs" />
-    <Compile Include="Mocks\EF\TestDbAsyncQueryProvider.cs" />
-    <Compile Include="Mocks\EF\TestDbSet.cs" />
     <Compile Include="Mocks\PageGrabberMock.cs" />
     <Compile Include="Mocks\PageParserMock.cs" />
     <Compile Include="PageGrabberTest.cs" />
@@ -80,9 +76,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnekdotGrabber.Model\AnekdotGrabber.Model.csproj">
+      <Project>{fb83d85c-9da9-49c4-aa1c-7beb0b98abb5}</Project>
+      <Name>AnekdotGrabber.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnekdotGrabber\AnekdotGrabber.csproj">
       <Project>{f34d1771-2c18-4140-9e7d-3670efe1b69a}</Project>
       <Name>AnekdotGrabber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.Benedichuk.Testing.EF\Com.Benedichuk.Testing.EF.csproj">
+      <Project>{37cca5fa-da1e-4390-8652-177cb60afba0}</Project>
+      <Name>Com.Benedichuk.Testing.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

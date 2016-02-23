@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AnekdotGrabber.Model;
 using System.Data.Entity;
-using AnekdotGrabber.Test.Mocks.EF;
+using Com.Benedichuk.Testing.EF;
 
 namespace AnekdotGrabber.Test.Mocks
 {
@@ -24,6 +24,7 @@ namespace AnekdotGrabber.Test.Mocks
         public int SaveChanges()
         {
             this.SaveChangesCount++;
+            (Stories as TestDbSet<Story>).SaveChanges();
             return 1;
         }
     }

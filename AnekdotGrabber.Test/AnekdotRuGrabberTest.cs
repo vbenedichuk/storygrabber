@@ -29,7 +29,7 @@ namespace AnekdotGrabber.Test
             AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock);
             grabber.GrabIt(new DateTime(2016, 02, 22, 10, 03, 12));
             Assert.AreEqual(1, resultUrls.Count);
-            Assert.AreEqual(1, dbContextMock.SaveChangesCount);
+            Assert.AreEqual(2, dbContextMock.SaveChangesCount);
             Assert.AreEqual(result, dbContextMock.Stories.Local.Count);
             Assert.AreEqual("http://www.anekdot.ru/release/story/day/2016-02-22/", resultUrls[0]);
         }
@@ -51,7 +51,7 @@ namespace AnekdotGrabber.Test
             DBContextMock dbContextMock = new DBContextMock();
             AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock);
             grabber.GrabIt(new DateTime(2016, 02, 16, 10, 03, 12), new DateTime(2016, 02, 22, 10, 03, 12));
-            Assert.AreEqual(7, dbContextMock.SaveChangesCount);
+            Assert.AreEqual(14, dbContextMock.SaveChangesCount);
             Assert.AreEqual(result, dbContextMock.Stories.Local.Count);
             Assert.AreEqual(7, resultUrls.Count);
             Assert.AreEqual("http://www.anekdot.ru/release/story/day/2016-02-16/", resultUrls[0]);
