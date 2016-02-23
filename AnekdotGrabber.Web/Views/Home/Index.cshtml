@@ -8,25 +8,85 @@
     <h1>Истории</h1>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div id="yearsList">
+    <div class="row">
+        <!-- ko if: selectedYear -->
+        <!-- ko with: selectedYear-->
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading col-md-12" data-bind="text:year, click: toggle">
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: selectedMonth -->
+        <!-- ko with: selectedMonth -->
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-bind="text:name, click: toggle">
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: selectedDay -->
+        <!-- ko with: selectedDay -->
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-bind="text:day, click: toggle">
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="row">
+
+        <!-- Years list -->
+        <!-- ko if: selectedYear() == null-->
+        <!-- ko foreach:years -->
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-bind="text:year, click: toggle">
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- Month list -->
+        <!-- ko if: selectedYear && selectedMonth()==null -->
+        <!-- ko with:selectedYear -->
+        <!-- ko foreach:months -->
+        <div class="panel col-md-2">
+            <div class="panel-heading" data-bind="text:name, click: toggle">
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- Days list -->
+        <!-- ko if: selectedYear && selectedMonth && !selectedDay() -->
+        <!-- ko with:selectedMonth -->
+        <!-- ko foreach:days -->
+        <div class="panel col-md-1">
+            <div class="panel-heading" data-bind="text:day, click: toggle">
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- Story list -->
+        <!-- ko if: selectedYear && selectedMonth && selectedDay() -->
+        <!-- ko with:selectedDay -->
+        <!-- ko foreach:stories -->
+        <div class="panel panel-default">
+            <div class="panel-body" data-bind="html:text">
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
     </div>
 </div>
 
