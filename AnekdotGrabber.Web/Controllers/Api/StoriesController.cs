@@ -20,7 +20,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
 
         /// <summary>
         /// GET: api/Stories
-        /// Возвращает список историй за дату
+        /// Returns list of stories for the date
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
 
         /// <summary>
         /// GET: api/Stories/5
-        /// Возвращает историю по ID
+        /// Returns story by id
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>

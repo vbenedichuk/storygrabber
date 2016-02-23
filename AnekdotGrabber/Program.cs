@@ -18,7 +18,7 @@ namespace AnekdotGrabber
             }
             catch(UnableToGrabPageException ex)
             {
-                Console.WriteLine(String.Format("Unable to grab the page. ErrorCode: {0}, Url:{1}", ex.StatusCode, ex.Url));//TODO: Extract to resourse.
+                Console.WriteLine(String.Format(AppResources.UnableToGrabThePage, ex.StatusCode, ex.Url));
             }
         }
     }

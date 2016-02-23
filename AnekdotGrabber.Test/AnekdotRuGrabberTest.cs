@@ -77,7 +77,7 @@ namespace AnekdotGrabber.Test
             }
             catch(ArgumentException ex)
             {
-                Assert.AreEqual(ex.Message, "Start Date should be less or equal to End Date"); //TODO: get from library resourse
+                Assert.AreEqual(ex.Message, "Start Date should be less or equal to End Date");
             }
         }
     }

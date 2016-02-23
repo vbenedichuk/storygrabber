@@ -20,7 +20,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
 
         /// <summary>
         /// GET: api/Calendar
-        /// Возвращает список лет, за которые есть статьи. Упорядоченный по возрастанию.
+        /// Returns sorted list of years with articles availalbe. 
         /// </summary>
         /// <returns></returns>
         public IEnumerable<int> Get()
@@ -29,7 +29,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
         }
 
         /// <summary>
-        /// Возвращает список месяцев в году, за которые есть статьи. Упорядоченный по возрастанию.
+        /// Returns sorted list of months with articles availalbe. 
         /// </summary>
         /// <param name="year"></param>
         /// <returns></returns>
@@ -39,7 +39,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
         }
 
         /// <summary>
-        /// Возвращает список дней в месяце, за которые есть статьи. Упорядоченный по возрастанию.
+        /// Returns sorted list of days with articles availalbe. 
         /// </summary>
         /// <param name="year"></param>
         /// <returns></returns>
