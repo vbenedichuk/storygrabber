@@ -26,7 +26,8 @@ namespace AnekdotGrabber.Test
             PageGrabberMock pageGrabber = new PageGrabberMock(resultUrls);
             PageParserMock pageParser = new PageParserMock(count);
             DBContextMock dbContextMock = new DBContextMock();
-            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock);
+            LogWrapperMock logWrapperMock = new LogWrapperMock();
+            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock, logWrapperMock);
             grabber.GrabIt(new DateTime(2016, 02, 22, 10, 03, 12));
             Assert.AreEqual(1, resultUrls.Count);
             Assert.AreEqual(2, dbContextMock.SaveChangesCount);
@@ -49,7 +50,8 @@ namespace AnekdotGrabber.Test
             PageGrabberMock pageGrabber = new PageGrabberMock(resultUrls);
             PageParserMock pageParser = new PageParserMock(count);
             DBContextMock dbContextMock = new DBContextMock();
-            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock);
+            LogWrapperMock logWrapperMock = new LogWrapperMock();
+            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock, logWrapperMock);
             grabber.GrabIt(new DateTime(2016, 02, 16, 10, 03, 12), new DateTime(2016, 02, 22, 10, 03, 12));
             Assert.AreEqual(14, dbContextMock.SaveChangesCount);
             Assert.AreEqual(result, dbContextMock.Stories.Local.Count);
@@ -70,7 +72,8 @@ namespace AnekdotGrabber.Test
             PageGrabberMock pageGrabber = new PageGrabberMock(resultUrls);
             PageParserMock pageParser = new PageParserMock(0);
             DBContextMock dbContextMock = new DBContextMock();
-            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock);
+            LogWrapperMock logWrapperMock = new LogWrapperMock();
+            AnekdotRuGrabber grabber = new AnekdotRuGrabber(pageGrabber, pageParser, dbContextMock, logWrapperMock);
             try {
                 grabber.GrabIt(new DateTime(2016, 02, 22, 10, 03, 12), new DateTime(2016, 02, 16, 10, 03, 12));
                 Assert.Fail();

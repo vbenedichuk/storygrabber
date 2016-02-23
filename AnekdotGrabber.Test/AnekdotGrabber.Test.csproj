@@ -65,6 +65,7 @@
     <Compile Include="AnekdotRuGrabberTest.cs" />
     <Compile Include="AnekdotRuPageParserTest.cs" />
     <Compile Include="Mocks\DBContextMock.cs" />
+    <Compile Include="Mocks\LogWrapperMock.cs" />
     <Compile Include="Mocks\PageGrabberMock.cs" />
     <Compile Include="Mocks\PageParserMock.cs" />
     <Compile Include="PageGrabberTest.cs" />

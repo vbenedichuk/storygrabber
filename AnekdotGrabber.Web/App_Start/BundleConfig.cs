@@ -10,6 +10,7 @@ namespace AnekdotGrabber.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                         "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/Logic/applicationModel.js",
                         "~/Scripts/Logic/applicationLogic.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

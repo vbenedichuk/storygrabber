@@ -12,45 +12,29 @@
     <div class="row">
         <!-- ko if: selectedYear -->
         <!-- ko with: selectedYear-->
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading col-md-12" data-bind="text:year, click: toggle">
-                </div>
-            </div>
-        </div>
+        <div class="btn btn-default" data-bind="text:year, click: toggle">
+        </div>        
         <!-- /ko -->
         <!-- /ko -->
         <!-- ko if: selectedMonth -->
         <!-- ko with: selectedMonth -->
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading" data-bind="text:name, click: toggle">
-                </div>
-            </div>
+        <div class="btn btn-default" data-bind="text:name, click: toggle">
         </div>
         <!-- /ko -->
         <!-- /ko -->
         <!-- ko if: selectedDay -->
         <!-- ko with: selectedDay -->
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading" data-bind="text:day, click: toggle">
-                </div>
-            </div>
+        <div class="btn btn-default" data-bind="text:day, click: toggle">
         </div>
         <!-- /ko -->
         <!-- /ko -->
     </div>
-    <div class="row">
-
+    
+    <div class="row top-buffer">
         <!-- Years list -->
         <!-- ko if: selectedYear() == null-->
         <!-- ko foreach:years -->
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading" data-bind="text:year, click: toggle">
-                </div>
-            </div>
+        <div class="btn btn-default col-md-1" data-bind="text:year, click: toggle">
         </div>
         <!-- /ko -->
         <!-- /ko -->
@@ -58,9 +42,7 @@
         <!-- ko if: selectedYear && selectedMonth()==null -->
         <!-- ko with:selectedYear -->
         <!-- ko foreach:months -->
-        <div class="panel col-md-2">
-            <div class="panel-heading" data-bind="text:name, click: toggle">
-            </div>
+        <div class="btn btn-default col-md-1" data-bind="text:name, click: toggle">
         </div>
         <!-- /ko -->
         <!-- /ko -->
@@ -68,10 +50,8 @@
         <!-- Days list -->
         <!-- ko if: selectedYear && selectedMonth && !selectedDay() -->
         <!-- ko with:selectedMonth -->
-        <!-- ko foreach:days -->
-        <div class="panel col-md-1">
-            <div class="panel-heading" data-bind="text:day, click: toggle">
-            </div>
+        <!-- ko foreach:days -->        
+        <div class="btn btn-default col-md-1" data-bind="text:day, click: toggle">
         </div>
         <!-- /ko -->
         <!-- /ko -->

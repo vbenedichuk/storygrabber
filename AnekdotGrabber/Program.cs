@@ -13,8 +13,9 @@ namespace AnekdotGrabber
         static void Main(string[] args)
         {
             try {
-                AnekdotRuGrabber grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext());
-                grabber.GrabIt(DateTime.Now.AddMonths(-1), DateTime.Now);
+                //NLog.LogManager.Configuration.Reload();
+                AnekdotRuGrabber grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext(), new LogWrapper("AnekdotRuGrabber"));
+                grabber.GrabIt(DateTime.Now.AddMonths(-4), DateTime.Now);
             }
             catch(UnableToGrabPageException ex)
             {

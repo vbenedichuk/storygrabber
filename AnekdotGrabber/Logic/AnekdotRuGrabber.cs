@@ -2,10 +2,7 @@
 using AnekdotGrabber.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnekdotGrabber.Logic
 {
@@ -14,14 +11,16 @@ namespace AnekdotGrabber.Logic
         private IPageGrabber pageGrabber;
         private IPageParser pageParser;
         private IAppDbContext context;
+        ILogWrapper logWrapper;
 
         private const string SITE_URL_TEMPLATE = "http://www.anekdot.ru/release/story/day/{0:yyyy-MM-dd}/";
 
-        public AnekdotRuGrabber(IPageGrabber pageGrabber, IPageParser pageParser, IAppDbContext context)
+        public AnekdotRuGrabber(IPageGrabber pageGrabber, IPageParser pageParser, IAppDbContext context, ILogWrapper logWrapper)
         {
             this.pageGrabber = pageGrabber;
             this.pageParser = pageParser;
             this.context = context;
+            this.logWrapper = logWrapper;
         }
 
         public void GrabIt(DateTime startDateTime, DateTime endDateTime)
@@ -34,7 +33,8 @@ namespace AnekdotGrabber.Logic
             DateTime endDate = endDateTime.Date;
             while(currentDate <= endDate)
             {
-                Debug.WriteLine(currentDate);
+                
+                logWrapper.Info("GET: {0}", currentDate);
                 Story[] storiesToDelete = context.Stories.Where<Story>(x => x.Date == currentDate).ToArray<Story>();
                 context.Stories.RemoveRange(storiesToDelete);
                 context.SaveChanges();
