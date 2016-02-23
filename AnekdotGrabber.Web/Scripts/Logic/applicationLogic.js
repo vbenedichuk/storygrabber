@@ -5,7 +5,7 @@ function MainPageModel() {
 }
 
 MainPageModel.prototype.initialize = function () {
-
+    
 }
 
 function Story(data) {
@@ -15,3 +15,10 @@ function Story(data) {
     self.title = ko.observable(data.Title);
     self.text = ko.observable(data.Text);
 }
+
+var model;
+
+$(function () {
+    model = new MainPageModel();
+    model.initialize();
+});

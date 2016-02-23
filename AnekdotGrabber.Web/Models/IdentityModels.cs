@@ -19,7 +19,13 @@ namespace AnekdotGrabber.Web.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public interface IApplicationDbContext 
+    {
+        DbSet<Story> Stories { get; set; }
+        int SaveChanges();
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public DbSet<Story> Stories { get; set; }
 
