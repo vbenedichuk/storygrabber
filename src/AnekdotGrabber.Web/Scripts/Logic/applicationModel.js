@@ -167,8 +167,7 @@ Month.prototype.select = function (day) {
 // Day model
 //******************************************************************
 function Day(data, month, year, parent) {
-    var self = this;
-    
+    var self = this;    
     self.parent = parent;
     self.year = ko.observable(year);
     self.month = ko.observable(month);
@@ -176,7 +175,6 @@ function Day(data, month, year, parent) {
     self.stories = ko.observableArray([]);
     self.expanded = ko.observable(false);
     self.loaded = ko.observable(false);
-
 }
 
 Day.prototype.load = function () {
