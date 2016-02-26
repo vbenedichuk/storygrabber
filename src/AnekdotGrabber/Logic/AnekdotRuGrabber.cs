@@ -33,14 +33,13 @@ namespace AnekdotGrabber.Logic
             DateTime endDate = endDateTime.Date;
             while(currentDate <= endDate)
             {
-
                 logger.Info("GET: {0}", currentDate);
                 Story[] storiesToDelete = context.Stories.Where<Story>(x => x.Date == currentDate).ToArray<Story>();
                 context.Stories.RemoveRange(storiesToDelete);
                 context.SaveChanges();
 
                 string pageContents = pageGrabber.GetPageContents(String.Format(SITE_URL_TEMPLATE, currentDate));
-                IList<Story> stories = pageParser.ParsePage(pageContents);                
+                var stories = pageParser.ParsePage(pageContents);                
                 foreach (Story story in stories)
                 {
                     

@@ -14,11 +14,10 @@ namespace AnekdotGrabber.Logic
         {
             HttpClient httpClient = new HttpClient();
             Task<HttpResponseMessage> responseTask = httpClient.GetAsync(requestUrl);
-            responseTask.Wait();
-            if(responseTask.Result.IsSuccessStatusCode)
+            var response = responseTask.Result;
+            if(response.IsSuccessStatusCode)
             {
-                Task<string> result = responseTask.Result.Content.ReadAsStringAsync();
-                result.Wait();
+                Task<string> result = response.Content.ReadAsStringAsync();
                 return result.Result;
             }
             else
