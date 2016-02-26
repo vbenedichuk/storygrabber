@@ -12,7 +12,8 @@ namespace AnekdotGrabber
     {
         static void Main(string[] args)
         {
-            try {
+            try
+            {
                 AnekdotRuGrabber grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext());
                 grabber.GrabIt(DateTime.Now.AddMonths(-4), DateTime.Now);
             }

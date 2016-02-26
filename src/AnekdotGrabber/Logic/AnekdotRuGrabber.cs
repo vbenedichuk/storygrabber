@@ -29,16 +29,16 @@ namespace AnekdotGrabber.Logic
             {
                 throw new ArgumentException(AppResources.StartDateShouldBeLessOrEqualToEndDate);
             }
-            DateTime currentDate = startDateTime.Date;
-            DateTime endDate = endDateTime.Date;
+            var currentDate = startDateTime.Date;
+            var endDate = endDateTime.Date;
             while(currentDate <= endDate)
             {
                 logger.Info("GET: {0}", currentDate);
-                Story[] storiesToDelete = context.Stories.Where<Story>(x => x.Date == currentDate).ToArray<Story>();
+                var storiesToDelete = context.Stories.Where<Story>(x => x.Date == currentDate).ToArray<Story>();
                 context.Stories.RemoveRange(storiesToDelete);
                 context.SaveChanges();
 
-                string pageContents = pageGrabber.GetPageContents(String.Format(SITE_URL_TEMPLATE, currentDate));
+                var pageContents = pageGrabber.GetPageContents(String.Format(SITE_URL_TEMPLATE, currentDate));
                 var stories = pageParser.ParsePage(pageContents);                
                 foreach (Story story in stories)
                 {

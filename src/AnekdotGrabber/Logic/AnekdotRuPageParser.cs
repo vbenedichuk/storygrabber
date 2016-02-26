@@ -13,16 +13,15 @@ namespace AnekdotGrabber.Logic
     {
         public IList<Story> ParsePage(string page)
         {
-            List<Story> result = new List<Story>();
-
-            HtmlDocument document = new HtmlDocument();
+            var result = new List<Story>();
+            var document = new HtmlDocument();
             document.LoadHtml(page);
-            HtmlNodeCollection nodes = document.DocumentNode.SelectNodes("//div[@class='topicbox']");
+            var nodes = document.DocumentNode.SelectNodes("//div[@class='topicbox']");
             if (nodes != null)
             {
-                foreach (HtmlNode node in nodes)
+                foreach (var node in nodes)
                 {
-                    HtmlNode textNode = node.SelectSingleNode(".//div[@class='text']");
+                    var textNode = node.SelectSingleNode(".//div[@class='text']");
                     if (textNode != null)
                     {
                         Story story = new Story()

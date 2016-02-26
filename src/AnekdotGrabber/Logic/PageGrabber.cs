@@ -12,12 +12,12 @@ namespace AnekdotGrabber.Logic
     {
         public string GetPageContents(string requestUrl)
         {
-            HttpClient httpClient = new HttpClient();
-            Task<HttpResponseMessage> responseTask = httpClient.GetAsync(requestUrl);
+            var httpClient = new HttpClient();
+            var responseTask = httpClient.GetAsync(requestUrl);
             var response = responseTask.Result;
             if(response.IsSuccessStatusCode)
             {
-                Task<string> result = response.Content.ReadAsStringAsync();
+                var result = response.Content.ReadAsStringAsync();
                 return result.Result;
             }
             else
