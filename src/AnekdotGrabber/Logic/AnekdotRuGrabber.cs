@@ -40,7 +40,7 @@ namespace AnekdotGrabber.Logic
 
                 var pageContents = pageGrabber.GetPageContents(String.Format(SITE_URL_TEMPLATE, currentDate));
                 var stories = pageParser.ParsePage(pageContents);                
-                foreach (Story story in stories)
+                foreach (var story in stories)
                 {
                     
                     story.Date = currentDate;
