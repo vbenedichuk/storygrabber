@@ -24,7 +24,7 @@ namespace AnekdotGrabber.Logic
                     var textNode = node.SelectSingleNode(".//div[@class='text']");
                     if (textNode != null)
                     {
-                        Story story = new Story()
+                        var story = new Story()
                         {
                             Text = textNode.InnerHtml
                         };
