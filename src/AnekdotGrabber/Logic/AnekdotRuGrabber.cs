@@ -3,6 +3,7 @@ using AnekdotGrabber.Model;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace AnekdotGrabber.Logic
@@ -24,11 +25,8 @@ namespace AnekdotGrabber.Logic
         }
 
         public void GrabIt(DateTime startDateTime, DateTime endDateTime)
-        {            
-            if(startDateTime > endDateTime)
-            {
-                throw new ArgumentException(AppResources.StartDateShouldBeLessOrEqualToEndDate);
-            }
+        {
+            Contract.Requires<ArgumentException>(startDateTime > endDateTime, AppResources.StartDateShouldBeLessOrEqualToEndDate);
             var currentDate = startDateTime.Date;
             var endDate = endDateTime.Date;
             while(currentDate <= endDate)

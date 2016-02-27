@@ -10,8 +10,10 @@ namespace AnekdotGrabber.Logic
     {
         private HttpStatusCode statusCode;
         private string url;
+
         public HttpStatusCode StatusCode { get { return statusCode; } }
         public string Url { get { return url; } }
+
         public UnableToGrabPageException(HttpStatusCode statusCode, string url) : base(statusCode.ToString())
         {
             this.statusCode = statusCode;

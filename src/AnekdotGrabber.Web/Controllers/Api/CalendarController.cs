@@ -11,7 +11,7 @@ namespace AnekdotGrabber.Web.Controllers.Api
 {
     public class CalendarController : ApiController //TODO: Optimize
     {
-        IApplicationDbContext ctx;
+        private IApplicationDbContext ctx;
 
         public CalendarController(IApplicationDbContext ctx) : base()
         {
