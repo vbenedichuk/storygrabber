@@ -26,10 +26,7 @@ namespace AnekdotGrabber.Logic
 
         public void GrabIt(DateTime startDateTime, DateTime endDateTime)
         {
-            if(startDateTime > endDateTime)
-            {
-                throw new ArgumentException(AppResources.StartDateShouldBeLessOrEqualToEndDate);
-            }            
+            Contract.Requires<ArgumentException>(startDateTime <= endDateTime, AppResources.StartDateShouldBeLessOrEqualToEndDate);
             var currentDate = startDateTime.Date;
             var endDate = endDateTime.Date;
             while(currentDate <= endDate)

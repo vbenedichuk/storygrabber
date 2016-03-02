@@ -77,7 +77,8 @@ namespace AnekdotGrabber.Test
             }
             catch(ArgumentException ex)
             {
-                Assert.AreEqual(ex.Message, "Start Date should be less or equal to End Date");
+                Assert.AreEqual(ex.Message, @"Precondition failed: startDateTime <= endDateTime  Start Date should be less or equal to End Date
+Parameter name: Start Date should be less or equal to End Date");
             }
         }
     }

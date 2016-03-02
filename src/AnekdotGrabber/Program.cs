@@ -15,7 +15,7 @@ namespace AnekdotGrabber
             try
             {
                 var grabber = new AnekdotRuGrabber(new PageGrabber(), new AnekdotRuPageParser(), new AppDBContext());
-                grabber.GrabIt(DateTime.Now.AddMonths(-4), DateTime.Now);
+                grabber.GrabIt(new DateTime(2001, 1, 1), DateTime.Now);
             }
             catch(UnableToGrabPageException unableToGrabEx)
             {
